@@ -89,6 +89,6 @@ var handlers = {
 };
 
 routes.setup(app,handlers);
-
-app.listen(3000);
-console.log('Listening on port 3000');
+var myport = 3000;
+app.listen(process.env.PORT || myport);
+console.log('Listening on port ' + myport);
