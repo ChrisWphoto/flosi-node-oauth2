@@ -21,16 +21,18 @@ function googleSignIn(req, res, next) {
 
 function googleSignInCallback(req, res, next) {
 	passport = req._passport.instance;
+console.log("pass  "+passport);
+	
 	passport.authenticate('google',function(err, user, info) {
 		if(err) {
 			return next(err);
 		}
 		if(!user) {
-			return res.redirect('https://localhost:8000');
+			return res.redirect('https://localhost:8100');
 		}
 		UserDB.findOne({email: user._json.email},function(err,usr) {
 			res.writeHead(302, {
-				'Location': 'https://localhost:8000/#/index?token=' + usr.token + '&user=' + usr.email
+				'Location': 'https://localhost:8100/#/index?token=' + usr.token + '&user=' + usr.email
 					+ '&fname=' + usr.first_name + '&lname=' +usr.last_name
 			});
 			res.end();

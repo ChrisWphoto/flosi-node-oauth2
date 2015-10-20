@@ -59,7 +59,7 @@ db.once('open', function callback() {
 passport.use(new google_strategy({
     clientID: '508436321918-i40ftgju62lolms8qi3jljbq0icu2k9q.apps.googleusercontent.com',
     clientSecret: 'fPFVg0KJK6CMW2ZkPgYGZwvL',
-    callbackURL: 'http://localhost:3000/auth/google/callback'
+    callbackURL: 'https://flosi-node-oauth.herokuapp.com/auth/google/callback'
   },
   function(accessToken, refreshToken, profile, done) {
 	UserDB.findOne({email: profile._json.email},function(err,usr) {
